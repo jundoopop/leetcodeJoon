@@ -11,17 +11,17 @@ class Solution:
             else:
                 nums_dict[num] = 1
 
-        repeated = None
-        omitted = None
-        # Iterate a number range to find the solution
-        for testcase in range(1, len(nums) + 1):
-            # Find the omitted number
-            if testcase not in nums_dict:
-                omitted = testcase
-            # Find the repeated number
-            if nums_dict.get(testcase, 0) == 2:
-                repeated = testcase
+        result = [0, 0]
+        while result[0] == 0 or result[1] == 0:
+            # Iterate a number range to find the solution
+            for testcase in range(1, len(nums) + 1):
+                # Find the omitted number
+                if testcase not in nums_dict:
+                    result[1] = testcase
+                # Find the repeated number
+                if nums_dict.get(testcase) == 2:
+                    result[0] = testcase
 
         # Return the list of repeated and omitted number
-        return [repeated, omitted]
+        return result
 
